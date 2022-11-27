@@ -1,0 +1,24 @@
+
+
+.thread-item-container{
+	background-color: rgba(0, 0, 0,.4);
+	margin-bottom: 1px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: flex;
+	gap: 15px;
+}
+
+
+
+.thread-item-area{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+
+.subthread-item-area{
+	background-color: aliceblue;
+}

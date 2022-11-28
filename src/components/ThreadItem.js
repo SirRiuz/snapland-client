@@ -5,6 +5,7 @@ import '../styles/ThreadItem.css'
 import ThreadContext from "../context/thread"
 import { useState } from 'react'
 import Reactions from './widgets/threadItem/Reactions'
+import { Link } from 'react-router-dom'
 
 
 
@@ -41,7 +42,7 @@ const Item = props => {
 			}}
 		>
 			<div {...props}>
-				<a href={"/t/"+props.data.id}>{ props.data.text }</a>
+				<Link to={"/t/"+props.data.id}>{ props.data.text }</Link>
 
 				{/* Buttons navigation */}
 				<div

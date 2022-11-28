@@ -54,11 +54,7 @@ const useTimeline = props => {
 	}
 
 	useEffect(() => {
-
 		if(props === null) {
-			console.log(cacheScroll)
-			console.log(cacheNext)
-			console.log(cacheData)
 			setData(() => cacheData)
 			setNext(() => cacheNext)
 			window.scrollTo(0,cacheScroll)

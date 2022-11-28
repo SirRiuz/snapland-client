@@ -12,13 +12,8 @@ const Home = props => {
 	const { path } = useNavigation(props)
 	return(
 		<div className="home-screen">
-			<Box
-				style={{ background:'yellow'}}
-				width={{ md:'750px' }}
-			>
-				<Timeline
-					id={path}
-				/>
+			<Box width={{ md:'600px' }}>
+				<Timeline id={path}/>
 			</Box>
 		</div>
 	)

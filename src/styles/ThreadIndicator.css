@@ -1,0 +1,22 @@
+
+
+
+.thread-indicator-container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.thread-indicator-item{
+    background-color: black;
+    height: 100%;
+    width: 1.9px;
+    border-radius: 100%;
+    opacity: .8;
+}
+
+

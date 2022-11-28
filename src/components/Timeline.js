@@ -3,6 +3,7 @@
 import { BottomScrollListener } from "react-bottom-scroll-listener"
 import TimelineContext from "../context/timeline"
 import useTimeline from "../hooks/useTimeline"
+import Newpost from "./Newpost"
 import ThreadItem from "./ThreadItem"
 
 
@@ -14,8 +15,10 @@ const Timeline = props => {
 		return <h1>Load</h1>
 	}
 
+
 	return(
 		<div>
+			<Newpost id={props.id}/>
 			<BottomScrollListener
 				onBottom={() =>{ nextPage(props.id) }}
 			>

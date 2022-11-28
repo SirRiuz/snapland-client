@@ -2,38 +2,10 @@
 
 import { useContext } from "react"
 import ThreadContext from "../../../context/thread"
-import ReactionBox from "../../ReactionBox"
+import ReactionBox from "./ReactionBox"
 import '../../../styles/ReactionsPreview.css'
-import SETTINGS from "../../../settings"
+import ReactionsPreview from "./ReactionPreview"
 
-
-/*
-	Vista previa de las reacciones
-*/
-const ReactionsPreview = props => {
-	if(props.data.length === 0) { return null }
-	return(
-		<div className="reactions-preview-container">
-			{props.data.map((x,k) => (
-				<div className="preview-item">
-					<div
-						className="reaction-preview"
-						style={{
-							backgroundImage:`url(${SETTINGS.API_BASE_URL}/${x.url})`
-						}}
-					/>
-					<div>{x.count}</div>
-				</div>
-			))}
-		</div>
-	)
-}
-
-
-/*
-  Este componente se encarga de desplegar
-	el panel de reacciones.
-*/
 
 const Reactions = props => {
 	const { reaction,showReactionModal } = useContext(ThreadContext)
@@ -41,15 +13,13 @@ const Reactions = props => {
 
 	return(
 		<div
-			onClick={() => {
-				if(!reaction) { showReactionModal(() => true) }
-			}}
-			style={{ background:'blue' }}
+			onClick={() => { if(!reaction) { showReactionModal(() => true) } }}
+			className="reaction-box"
 		>
-			<div>{reactionData.length}</div>
-			<ReactionsPreview data={reactionData.preview}/>
-			<div>x</div>
-			<ReactionBox thread={props.data}/>
+			<ReactionsPreview data={props.data}/>
+			{ props.data.length === 0 ? <div>x</div>:null }
+			{ reactionData !== null ? <div>{reactionData.length}</div>:<div>{props.data.length}</div> }
+			<ReactionBox thread={props.thread}/>
 		</div>
 	)
 }

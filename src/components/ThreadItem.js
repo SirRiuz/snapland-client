@@ -2,11 +2,12 @@
 
 
 import '../styles/ThreadItem.css'
+import '../styles/ThreadIndicator.css'
 import ThreadContext from "../context/thread"
 import { useState } from 'react'
-import Reactions from './widgets/threadItem/Reactions'
 import { Link } from 'react-router-dom'
-
+import ReactionsPreview from './widgets/threadItem/Reactions'
+ 
 
 
 const ThreadIndicator = props => {
@@ -15,14 +16,15 @@ const ThreadIndicator = props => {
 	if(props.size === 0){ return null }
 
 	return(
-		<div style={{ background:'pink' }}>
-			<div>x</div>
+		<div className="thread-indicator-container">
+			<div className="thread-indicator-dot"/>
 			{DATA.map((x,k) => (
-				<div key={k}>
-					.
-				</div>
+				<div
+					key={k}
+					className="thread-indicator-item"
+				/>
 			))}
-			<div>x</div>
+			<div className="thread-indicator-dot"/>
 		</div>
 	)
 }
@@ -30,7 +32,7 @@ const ThreadIndicator = props => {
 
 const Item = props => {
 	const [ reaction,showReactionModal ] = useState(false)
-	const [ reactionData,setReactionData ] = useState(props.data.reactionsPreview)
+	const [ reactionData,setReactionData ] = useState(null)
 
 	return(
 		<ThreadContext.Provider
@@ -41,25 +43,23 @@ const Item = props => {
 				reactionData
 			}}
 		>
-			<div {...props}>
-				<Link to={"/t/"+props.data.id}>{ props.data.text }</Link>
+			<div {...props} className="thread-item">
+				<Link className="thread-content" to={"/t/"+props.data.id}>
+					<span>{ props.data.text }</span>
+				</Link>
+				
 
-				{/* Buttons navigation */}
-				<div
-					style={{
-						background:'yellow',
-						display:'flex',
-						justifyContent:'flex-start'
-					}}
-				>
-					{/* Reaction button */}
-					<Reactions data={props.data}/>
+				{/* Reaction preview */}
+				<div className="thread-reactions-preview">
+					<ReactionsPreview
+						data={props.data.reactionsPreview.preview}
+						thread={props.data}
+					/>
 				</div>
 			</div>
 		</ThreadContext.Provider>
 	)
 }
-
 
 
 
@@ -69,8 +69,7 @@ const ThreadItem = props => {
 			className="thread-item-container"
 			{ ...props}
 		>
-
-			<div style={{background:'green' }}>
+			<div>
 				<ThreadIndicator size={props.data.subThreads.length}/>
 			</div>
 
@@ -78,14 +77,10 @@ const ThreadItem = props => {
 				<Item data={props.data}/>
 				<div className="subthread-item-area">
 					{props.data.subThreads.map((x,k) => (
-						<Item
-							key={k}
-							data={x}
-						/>
+						<Item key={k} data={x}/>
 					))}
 				</div>
 			</div>
-
 		</div>
 	)
 }

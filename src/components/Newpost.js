@@ -18,8 +18,8 @@ const Newpost = props => {
 	}
 
 	return(
-		<div>
-			<textarea ref={inputRef} placeholder="En que estas pensando?"/>
+		<div style={{ background:'white' }}>
+			<textarea ref={inputRef} placeholder="En que estas pensando Anonimo?"/>
 			<input
 				ref={fileRef}
 				type={'file'}

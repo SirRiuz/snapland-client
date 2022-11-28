@@ -6,7 +6,7 @@ import SETTINGS from "../settings"
 
 const createPost = props => {
 	var formData = new FormData()
-	var threadId = props.thread === undefined ? '':`${props.thread}/`
+	var threadId = props.thread === undefined || props.thread === null ? '':`${props.thread}/`
 	var threadFiles = props.files
 	var REQUEST_URL = SETTINGS.API_BASE_URL+SETTINGS.API_V1+'thread/'+threadId
 	

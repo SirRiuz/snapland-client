@@ -2,12 +2,11 @@
 
 
 import { useContext, useState } from "react"
-import ThreadContext from "../context/thread"
+import ThreadContext from "../../../context/thread"
 import Masonry from '@mui/lab/Masonry';
-import useReactions from "../hooks/useReaction";
-import '../styles/ReactionBox.css'
-import SETTINGS from "../settings";
-
+import useReactions from "../../../hooks/useReaction";
+import './../../../styles/ReactionBox.css'
+import SETTINGS from "../../../settings";
 
 /*
   Este es un item del palen de reacciones.
